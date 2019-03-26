@@ -64,6 +64,8 @@ public class BountyHunterAPI {
                     preferences = PreferenceManager.getDefaultSharedPreferences(context);
                     preferences.edit().putString("TOKEN", "Bearer " + response.body().getToken()).apply();
                     loggedInUser[0] = getLoggedInUser(preferences.getString("TOKEN", null));
+                    getLoggedInUser(preferences.getString("TOKEN", null),callBack);
+
                 } else if (response.code() == 401) {
                     Toast.makeText(context, "The password you entered was incorrect", Toast.LENGTH_LONG).show();
                 } else if (response.code() == 404) {
@@ -117,6 +119,7 @@ public class BountyHunterAPI {
     public User getUser(UUID userID) {
         final User[] retrievedUser = new User[1];
 
+    public void getUser(UUID userID,final FoundUserCallBack callBack) {
         String token = preferences.getString("TOKEN", null);
         Call<User> call = services.getUser(token, userID);
 
@@ -124,10 +127,12 @@ public class BountyHunterAPI {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
+                    callBack.onUserReturned(response.body());
                     Toast.makeText(context, "User account was found", Toast.LENGTH_LONG).show();
                     retrievedUser[0] = response.body();
                     Toast.makeText(context,  retrievedUser[0] .getFirstName(), Toast.LENGTH_LONG).show();
                     return;
+
                 } else if (response.code() == 404) {
                     Log.d("Response",response.raw().toString());
                     Toast.makeText(context, "Could not find the user account with the specified id \n Please try again", Toast.LENGTH_LONG).show();
@@ -207,8 +212,7 @@ public class BountyHunterAPI {
             @Override
             public void onResponse(Call<UserList> call, Response<UserList> response) {
                 if (response.code() == 200) {
-                    UserList body = response.body();
-                    users[0] = body.getUsers();
+                    callBack.onUsersFound(response.body().getUsers());
                     Toast.makeText(context, "User accounts with that username were found", Toast.LENGTH_LONG).show();
                 } else if (response.code() == 404) {
                     Toast.makeText(context, "Could not find the user account with the specified username \n Please try again", Toast.LENGTH_LONG).show();
@@ -225,7 +229,6 @@ public class BountyHunterAPI {
                 }
             }
         });
-        return users[0];
     }
 
     public void resetPasswordRequest(String email){
@@ -235,7 +238,7 @@ public class BountyHunterAPI {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 200) {
-                    Toast.makeText(context, "An email has been sent to your email with to reset your password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "An email has been sent with the link to reset your password", Toast.LENGTH_LONG).show();
                 }else if(response.code()==404){
                     Toast.makeText(context, "There is no user that links to the email entered \n Please enter the email the email you used to register your account", Toast.LENGTH_LONG).show();
                 }else if (response.code() == 500) {
@@ -245,7 +248,7 @@ public class BountyHunterAPI {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Toast.makeText(context, "Failed to connect to the server \n please close the application and try again", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -267,5 +270,15 @@ public class BountyHunterAPI {
         });
     }
 
-    ;
+    public boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public interface FoundUserCallBack {
+        void onUserReturned(User user);
+    }
+
+    public interface SearchUsersCallBack {
+        void onUsersFound(List<User> user);
+    }
 }

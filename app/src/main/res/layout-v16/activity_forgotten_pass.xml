@@ -54,7 +54,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="@string/please_enter_your_email_string"
+        android:hint="Please enter your email"
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -84,5 +84,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterEmail"
         tools:ignore="MissingConstraints" />
-
 </android.support.constraint.ConstraintLayout>

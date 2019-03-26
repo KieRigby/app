@@ -8,8 +8,8 @@
     android:padding="@dimen/_10sdp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/image_arrow"
+    <ImageButton
+        android:id="@+id/image_arrow_button"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="8dp"
@@ -17,22 +17,23 @@
         android:layout_marginTop="5dp"
         android:src="@drawable/ic_arrow_back_white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/darkblue"/>
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/createAccountText"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="4dp"
-        android:layout_toRightOf="@+id/image_arrow"
+        android:layout_toRightOf="@+id/image_arrow_button"
         android:gravity="center"
-        android:text="Create An Account"
+        android:text="@string/create_an_account_string"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        app:fontFamily="@font/moderat_regular"
-        app:layout_constraintStart_toEndOf="@+id/image_arrow"
+        app:fontFamily="@font/moderat_bold"
+        app:layout_constraintStart_toEndOf="@+id/image_arrow_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -40,23 +41,24 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text1"
+        android:layout_below="@+id/createAccountText"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_toRightOf="@+id/image_arrow"
+        android:layout_toRightOf="@+id/image_arrow_button"
         android:gravity="center"
-        android:text="Make an account so that you can start playing!"
+        android:text="@string/make_an_account_string"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:fontFamily="@font/moderat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1" />
+        app:layout_constraintTop_toBottomOf="@+id/createAccountText" />
 
     <Button
+        android:id="@+id/createAccountBtn"
         android:layout_width="336dp"
         android:layout_height="58dp"
         android:layout_centerHorizontal="true"
@@ -67,7 +69,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/drawable_border"
         android:gravity="center"
-        android:text="Create Account"
+        android:text="@string/create_account_btn_string"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +78,7 @@
         app:layout_widthPercent="80%" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/firstNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -85,7 +87,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="@string/first_name_string"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -95,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text2" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/lastNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -103,7 +105,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="@string/last_name_string"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -111,10 +113,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameEditText" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/registerUsernameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -123,7 +125,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Pick a username"
+        android:hint="@string/pick_a_username_string"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -131,10 +133,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/lastNameEditText" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/registerEmailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -143,7 +145,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="@string/email_address_string"
         android:inputType="textWebEmailAddress"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -151,10 +153,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameEditText" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/registerPasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -163,7 +165,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password_string"
         android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -171,10 +173,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/registerEmailEditText" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/confirmPasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -182,14 +184,14 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Confirm your password"
+        android:hint="@string/confirm_password_string"
         android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordEditText" />
 
 
 </android.support.constraint.ConstraintLayout>

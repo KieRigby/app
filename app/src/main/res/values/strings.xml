@@ -2,4 +2,22 @@
     <string name="app_name">Bounty Hunter</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_register">Register</string>
+    <string name="forgot_your_password_string">Forgot your Password?</string>
+    <string name="register_string">Register</string>
+    <string name="log_in_string">Log in</string>
+    <string name="username_string">Username</string>
+    <string name="password_string">Password</string>
+    <string name="forgotten_password_string">Forgotten Password</string>
+    <string name="please_enter_your_email_string">Please enter your email</string>
+    <string name="next_string">Next</string>
+    <string name="recover_password_string">We can help you recover your password, but first we need a few details from you...</string>
+    <string name="bounty_hunter_logo_string">Bounty Hunter Logo</string>
+    <string name="create_an_account_string">Create An Account</string>
+    <string name="make_an_account_string">Make an account so that you can start playing!</string>
+    <string name="create_account_btn_string">Create Account</string>
+    <string name="first_name_string">First Name</string>
+    <string name="last_name_string">Last Name</string>
+    <string name="pick_a_username_string">Pick a username</string>
+    <string name="email_address_string">Email Address</string>
+    <string name="confirm_password_string">Confirm your password</string>
 </resources>

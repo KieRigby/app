@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:contentDescription="@string/bounty_hunter_logo_string"
         android:id="@+id/logoImageView"
         android:layout_width="wrap_content"
         android:layout_height="283dp"
@@ -33,7 +32,7 @@
         android:layout_marginRight="16dp"
         android:background="@color/white"
         android:ems="10"
-        android:hint="@string/username_string"
+        android:hint="Username"
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
         android:paddingTop="5dp"
@@ -55,7 +54,7 @@
         android:layout_marginRight="16dp"
         android:background="@color/white"
         android:ems="10"
-        android:hint="@string/password_string"
+        android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="15dp"
         android:paddingTop="5dp"
@@ -84,8 +83,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordEditText"
-        android:clickable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordEditText" />
 
     <Button
         android:id="@+id/loginBtn"

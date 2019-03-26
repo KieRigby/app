@@ -11,4 +11,12 @@ public class GlobalUser extends Application {
     public void setLoggedInUser(User loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
+
+    public User getLoggedInUser(){
+        return this.loggedInUser;
+    }
+
+    public void logoutUser(){
+        this.loggedInUser=null;
+    }
 }
