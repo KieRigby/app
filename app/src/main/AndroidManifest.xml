@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeepLink">
         <activity android:name=".LoggedInActivity"></activity>
         <activity android:name=".RegisterActivity">
             <meta-data

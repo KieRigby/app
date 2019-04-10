@@ -52,18 +52,14 @@ public class BountyHunterAPI {
         });
     }
 
-    public User loginUser(String username, String password) {
+    public void loginUser(String username, String password,final FoundUserCallBack callBack) {
         Call<Token> call = services.loginUser(username, password);
-
-        final User[] loggedInUser = new User[1];
-
         call.enqueue(new Callback<Token>() {
             @Override
             public void onResponse(Call<Token> call, Response<Token> response) {
                 if (response.code() == 200) {
                     preferences = PreferenceManager.getDefaultSharedPreferences(context);
                     preferences.edit().putString("TOKEN", "Bearer " + response.body().getToken()).apply();
-                    loggedInUser[0] = getLoggedInUser(preferences.getString("TOKEN", null));
                     getLoggedInUser(preferences.getString("TOKEN", null),callBack);
 
                 } else if (response.code() == 401) {
@@ -83,19 +79,16 @@ public class BountyHunterAPI {
                 }
             }
         });
-        return loggedInUser[0];
     }
 
-    private User getLoggedInUser(String token) {
+    private void getLoggedInUser(String token, final FoundUserCallBack callBack) {
         Call<User> call = services.getLoggedInUser(token);
-
-        final User[] retrievedUser = new User[1];
 
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() == 200) {
-                    retrievedUser[0] = response.body();
+                    callBack.onUserReturned(response.body());
                 } else if (response.code() == 404) {
                     Toast.makeText(context, "Could not find the user account with the specified username \n Please try again", Toast.LENGTH_LONG).show();
                 } else if (response.code() == 401) {
@@ -113,11 +106,7 @@ public class BountyHunterAPI {
                 }
             }
         });
-        return retrievedUser[0];
     }
-
-    public User getUser(UUID userID) {
-        final User[] retrievedUser = new User[1];
 
     public void getUser(UUID userID,final FoundUserCallBack callBack) {
         String token = preferences.getString("TOKEN", null);
@@ -129,9 +118,6 @@ public class BountyHunterAPI {
                 if (response.code() == 200) {
                     callBack.onUserReturned(response.body());
                     Toast.makeText(context, "User account was found", Toast.LENGTH_LONG).show();
-                    retrievedUser[0] = response.body();
-                    Toast.makeText(context,  retrievedUser[0] .getFirstName(), Toast.LENGTH_LONG).show();
-                    return;
 
                 } else if (response.code() == 404) {
                     Log.d("Response",response.raw().toString());
@@ -149,8 +135,6 @@ public class BountyHunterAPI {
                 }
             }
         });
-
-        return retrievedUser[0];
     }
 
     public void updateUser(UUID userID, User updateUser) {
@@ -203,8 +187,7 @@ public class BountyHunterAPI {
 
     }
 
-    public List<User> searchUser(String username) {
-        final List<User>[] users = new List[]{new ArrayList<>()};
+    public void searchUser(String username,final SearchUsersCallBack callBack) {
         String token = preferences.getString("TOKEN",null);
         Call<UserList> call = services.searchUser(token, username);
 
