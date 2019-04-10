@@ -21,7 +21,7 @@ public class RetrofitClientInstance {
     //Declare the retrofit object
     private static Retrofit retrofit;
     //URl of the site the JSON will be retrieved from
-    private static final String BASE_URL ="http://api.bountyhunt.me";
+    private static final String BASE_URL ="https://api.bountyhunt.me";
 
     /**
      * Creates the instance of the retrofit client

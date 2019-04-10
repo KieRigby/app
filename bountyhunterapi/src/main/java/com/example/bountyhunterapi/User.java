@@ -81,4 +81,32 @@ public class User {
         return this.updated_at;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this==obj){
+            return true;
+        }
+        if (obj==null||getClass()!=obj.getClass()){
+            return false;
+        }
+        User userToCompare =(User)obj;
+        return this.username.equals(userToCompare.getUsername())&&this.getEmail().equals(userToCompare.getEmail());
+
+    }
 }

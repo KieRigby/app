@@ -13,6 +13,6 @@ public class UserList {
      * @return list of fruit objects
      */
     public List<User> getUsers() {
-        return users;
+        return this.users;
     }
 }

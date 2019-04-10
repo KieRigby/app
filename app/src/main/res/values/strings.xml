@@ -20,4 +20,27 @@
     <string name="pick_a_username_string">Pick a username</string>
     <string name="email_address_string">Email Address</string>
     <string name="confirm_password_string">Confirm your password</string>
+    <string name="my_profile_string">My Profile</string>
+    <string name="update_profile_string">Update profile</string>
+    <string name="delete_profile_string">Delete profile</string>
+    <string name="stat_title_string">Your stats</string>
+    <string name="search_username">Search for username</string>
+    <string name="find_friends_string">Find friends</string>
+    <string name="new_password_string">New Password</string>
+    <string name="confirm_new_pass_string">Confirm New Password</string>
+    <string name="submit_string">Submit</string>
+    <string name="change_pass_string">Change Password</string>
+    <string name="create_game_string">Create Game</string>
+    <string name="game_history_string">Game History</string>
+    <string name="game_rules_string">Game Rules</string>
+    <string name="friends_string">My Friends</string>
+    <string name="stat_name_string">Stat Name</string>
+    <string name="actual_stat_string">Actual Stat</string>
+    <string name="friend_s_name_string">Friend\'s Name</string>
+    <string name="position_string">Position:</string>
+    <string name="won_or_lost_string">W/L:</string>
+    <string name="points_string">Points:</string>
+    <string name="captures_string">Captures:</string>
+    <string name="challenges_completed_string">Challenges Completed:</string>
+    <string name="challenges_failed_string">Challenges Failed:</string>
 </resources>
